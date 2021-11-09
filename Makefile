@@ -1,4 +1,4 @@
-# Comprehensive Makefile for CS162
+# Comprehensive Makefile for C++ projects (Atleast on PSU Linux Servers)
 # This will automatically compile any .cpp files in the current directory.
 # Some of the syntax was adapted from:
 # https://gist.github.com/Wenchy/64db1636845a3da0c4c7
