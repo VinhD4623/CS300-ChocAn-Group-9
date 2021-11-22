@@ -30,7 +30,7 @@ class Member
         Address address;
         bool Status;
         Member();
-        Member(const char * _Name,int _ID, Address & A, bool _Status)
+        Member(const char * _Name, int _ID, const Address & A, bool _Status);
         ~Member();
 };
 
@@ -61,6 +61,6 @@ class Service
         double Fee;
 
         Service();
-        Service(const char * _Name, int _ServiceCode, int _Date[8], int _DateTime[14], const Provider * p, const Member * m, double _Fee);
+        Service(const char * _Name, int _ServiceCode, int _Date[8], int _DateTime[14], Provider * p, Member * m, double _Fee);
         ~Service();
-}
+};

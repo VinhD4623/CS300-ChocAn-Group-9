@@ -51,7 +51,7 @@ Member::~Member()
 //Provider Class
 ///////////////////////////////
 Provider::Provider(){}
-Provider::Provider(const char * _Name, int _ID, const Address & A, int _TotalMember, double _TotalFee)
+Provider::Provider(const char * _Name, int _ID, Address & A, int _TotalMember, double _TotalFee)
 {
     Name = new char[strlen(_Name) + 1];
     strcpy(Name,_Name);
@@ -76,7 +76,7 @@ Provider::~Provider()
 //Service Class
 ///////////////////////////////
 Service::Service(){}
-Service::Service(const char * _Name, int _ServiceCode, int _Date[8], int _DateTime[14], const Provider * p, const Member * m, double _Fee)
+Service::Service(const char * _Name, int _ServiceCode, int _Date[8], int _DateTime[14], Provider * p, Member * m, double _Fee)
 {
     Name = new char[strlen(_Name) + 1];
     strcpy(Name, _Name);
