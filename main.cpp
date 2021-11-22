@@ -1,5 +1,4 @@
 #include <iostream>
-<<<<<<< HEAD
 //#include "info.h"
 #include "define.h"
 #include "providerdirectory.h"
@@ -40,13 +39,4 @@ int main()
    list.writeToFile();
     
    return 0;
-=======
-
-using namespace std;
-
-int main(){
-
-    
-    return 0;
->>>>>>> 83a9c39eeee3c5b27097155c1cb1274304c32b5b
 }
