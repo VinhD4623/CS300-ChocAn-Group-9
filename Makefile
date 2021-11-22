@@ -7,7 +7,7 @@
 CC = g++
 CFLAGS := -std=c++11
 
-exe_file = monster
+exe_file = run
 
 # Handle debug case
 DEBUG ?= 1

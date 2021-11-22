@@ -252,6 +252,7 @@ void Member::display()
 ///////////////////////////////
 //Provider Class
 ///////////////////////////////
+<<<<<<< HEAD
 Provider::Provider()
 {
     Name = NULL;
@@ -268,6 +269,10 @@ Provider::~Provider()
 }
 
 void Provider::copy_provider(const char * _Name, int _ID, const Address & A, int _TotalMember, double _TotalFee)
+=======
+Provider::Provider(){}
+Provider::Provider(const char * _Name, int _ID, Address & A, int _TotalMember, double _TotalFee)
+>>>>>>> 83a9c39eeee3c5b27097155c1cb1274304c32b5b
 {
     if(Name){
         delete [] Name;
@@ -370,7 +375,7 @@ char Provider::return_name()
 ///////////////////////////////
 
 Service::Service(){}
-Service::Service(const char * _Name, int _ServiceCode, int _Date[8], int _DateTime[14], const Provider * p, const Member * m, double _Fee)
+Service::Service(const char * _Name, int _ServiceCode, int _Date[8], int _DateTime[14], Provider * p, Member * m, double _Fee)
 {
     Name = new char[strlen(_Name) + 1];
     strcpy(Name, _Name);

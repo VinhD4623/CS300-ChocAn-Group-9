@@ -36,7 +36,11 @@ class Member
         bool Status;
 
         Member();
+<<<<<<< HEAD:info.h
         Member(const Member &);
+=======
+        Member(const char * _Name, int _ID, const Address & A, bool _Status);
+>>>>>>> 83a9c39eeee3c5b27097155c1cb1274304c32b5b:Info.h
         ~Member();
 
         void copy_member(const char * _Name,int _ID, const Address & A, bool _Status);
@@ -81,6 +85,6 @@ class Service
         double Fee;
 
         Service();
-        Service(const char * _Name, int _ServiceCode, int _Date[8], int _DateTime[14], const Provider * p, const Member * m, double _Fee);
+        Service(const char * _Name, int _ServiceCode, int _Date[8], int _DateTime[14], Provider * p, Member * m, double _Fee);
         ~Service();
 };
