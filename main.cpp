@@ -1,5 +1,4 @@
 #include <iostream>
-<<<<<<< HEAD
 #include "define.h"
 #include "providerdirectory.h"
 
