@@ -21,6 +21,11 @@ Address::Address(const Address & source)
     copy_address(source.Street, source.City, source.State, source.ZIP);
 }
 
+//Copy constuctor
+Address::Address(const char * _Street, const char * _City, const char * _State, int _ZIP)
+{
+    copy_address(_Street, _City, _State, _ZIP);
+}
 
 //Destructor
 Address::~Address()
@@ -158,6 +163,13 @@ Member::Member(const Member & source)
     copy_member(source.Name, source.ID, source.address, source.Status);
 }
 
+//Copy constructor
+Member::Member(const char * _Name, int _ID, const Address & A, bool _Status)
+{
+    copy_member(_Name, _ID, A, _Status);
+}
+
+
 
 //Destructor
 Member::~Member()
@@ -252,7 +264,6 @@ void Member::display()
 ///////////////////////////////
 //Provider Class
 ///////////////////////////////
-<<<<<<< HEAD
 Provider::Provider()
 {
     Name = NULL;
@@ -263,16 +274,18 @@ Provider::Provider(const Provider & source)
     copy_provider(source.Name, source.ID, source.address, source.TotalMember, source.TotalFee);
 }
 
+
+Provider::Provider(const char * _Name, int _ID, const Address & A, int _TotalMember, double _TotalFee)
+{
+    copy_provider(_Name, _ID, A, _TotalMember, _TotalFee);
+}
+
 Provider::~Provider()
 {
     if(Name) delete [] Name;
 }
 
 void Provider::copy_provider(const char * _Name, int _ID, const Address & A, int _TotalMember, double _TotalFee)
-=======
-Provider::Provider(){}
-Provider::Provider(const char * _Name, int _ID, Address & A, int _TotalMember, double _TotalFee)
->>>>>>> 83a9c39eeee3c5b27097155c1cb1274304c32b5b
 {
     if(Name){
         delete [] Name;

@@ -1,6 +1,7 @@
 #include "define.h"
 #include "util.h"
 #include <iomanip>
+#include <cstring>
 ///////////////////////////////////////////////////
 // Junfei SUn
 // Address, Member, Provider, Service Class
@@ -18,6 +19,7 @@ class Address
 
         Address();
         Address(const Address & source);
+        Address(const char * _Street, const char * _City, const char * _State, int _ZIP);
         ~Address();
 
         void copy_address(const char * _Street, const char * _City, const char * _State, int _ZIP);
@@ -36,11 +38,8 @@ class Member
         bool Status;
 
         Member();
-<<<<<<< HEAD:info.h
         Member(const Member &);
-=======
-        Member(const char * _Name, int _ID, const Address & A, bool _Status);
->>>>>>> 83a9c39eeee3c5b27097155c1cb1274304c32b5b:Info.h
+        Member(const char * _Name,int _ID, const Address & A, bool _Status);
         ~Member();
 
         void copy_member(const char * _Name,int _ID, const Address & A, bool _Status);
@@ -60,6 +59,7 @@ class Provider
 
         Provider();
         Provider(const Provider &);
+        Provider(const char * , int _ID, const Address &, int , double );
         ~Provider();
 
         void copy_provider(const char * , int _ID, const Address &, int , double );
