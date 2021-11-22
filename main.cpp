@@ -1,6 +1,5 @@
 #include <iostream>
 <<<<<<< HEAD
-//#include "info.h"
 #include "define.h"
 #include "providerdirectory.h"
 
