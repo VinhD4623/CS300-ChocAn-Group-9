@@ -1,10 +1,5 @@
 /*
 * Author:	Vinh Duong
-* Course:	CS202
-* Assignment: 	Program3
-* Filename: 	UI.cpp
-* 
-*
 * Description: 	Implementation for functions that validate user input
 *
 *

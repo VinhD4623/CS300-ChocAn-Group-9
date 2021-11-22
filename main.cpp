@@ -1,10 +1,14 @@
 #include <iostream>
+<<<<<<< HEAD
 //#include "info.h"
+=======
+>>>>>>> 35120ba799c6ce9a46d7f05f2c76047d907a7f15
 #include "define.h"
 #include "providerdirectory.h"
 
 using namespace std;
 
+<<<<<<< HEAD
 int main()
 {
 
@@ -39,4 +43,10 @@ int main()
    list.writeToFile();
     
    return 0;
+=======
+int main(){
+
+    
+    return 0;
+>>>>>>> 35120ba799c6ce9a46d7f05f2c76047d907a7f15
 }
