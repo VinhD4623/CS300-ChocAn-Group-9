@@ -1,6 +1,7 @@
 #include "define.h"
 #include "util.h"
 #include <iomanip>
+#include <cstring>
 ///////////////////////////////////////////////////
 // Junfei SUn
 // Address, Member, Provider, Service Class
