@@ -1,3 +1,6 @@
+#ifndef INFO_H
+#define INFO_H
+
 #include "define.h"
 #include "util.h"
 #include <iomanip>
@@ -88,3 +91,5 @@ class Service
         Service(const char * _Name, int _ServiceCode, int _Date[8], int _DateTime[14], Provider * p, Member * m, double _Fee);
         ~Service();
 };
+
+#endif

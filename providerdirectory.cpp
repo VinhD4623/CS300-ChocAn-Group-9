@@ -114,6 +114,7 @@ int ProviderDirectory::clear(pnode *& head)
 int ProviderDirectory::editProvider()
 {
 
+    return 0;
 }
 
 
@@ -152,4 +153,6 @@ int ProviderDirectory::writeToFile()
         }
         outFile.close();
     }
+
+    return 0;
 }

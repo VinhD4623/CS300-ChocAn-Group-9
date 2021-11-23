@@ -49,9 +49,6 @@ void read_string(const char prompt[], char inputstr[], int maxchar)
 }
 
 
-
-
-
 //Prompts the user a message and reads in a int and returns the int
 //Validates user input
 int read_int(const char prompt[])
@@ -72,7 +69,50 @@ int read_int(const char prompt[])
 	return num;	
 }
 
+//Prompts the user a message and reads in a int with in the given bounds and returns the int
+//Validates user input
+int read_int_wbounds(const char prompt[], int lower_bound, int upper_bound)
+{
+	int num = 0;
+	cout << '\n' << prompt;
+	cin >> num;
+	while(!cin || num < lower_bound || num > upper_bound) 
+	{
+		cin.clear();
+		cin.ignore(100, '\n');
+		cout << '\n' << "Invalid input!" << '\n';
+		cout << '\n' << prompt;
+		cin >> num;
+		cin.ignore();
+	}
+	cin.ignore(100, '\n');
+	return num;	
+}
 
+//Prompts the user a message and reads in a int with in the given bounds and returns the int
+//Validates user input
+int read_int_maxdigits(const char prompt[], int max_num_digits)
+{
+	int max_num = 0;
+	for(int i=0; i<max_num_digits; i++){
+			max_num = 9 + (max_num * 10);
+	}
+
+	int num;
+	cout << "\n" << prompt << endl;
+	cin >> num;
+	while(!cin || num < 0 || num > max_num) 
+	{
+		cin.clear();
+		cin.ignore(100, '\n');
+		cout << '\n' << "Invalid input!" << '\n';
+		cout << '\n' << prompt;
+		cin >> num;
+		cin.ignore();
+	}
+	cin.ignore(100, '\n');
+	return num;	
+}
 
 //Prompts user to message to enter a float and returns the float
 //Validates user input
@@ -124,7 +164,7 @@ bool read_bool(const char prompt[])
 	do
 	{
 		answer = read_char(prompt);
-		tolower(answer);
+		answer = tolower(answer);
 	}while(!answer);
 
 	if(answer == 'y')
