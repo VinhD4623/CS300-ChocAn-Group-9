@@ -1,4 +1,5 @@
 #include "info.h"
+#include <string>
 
 int MAXCHAR = 101;
 using namespace std;
@@ -388,27 +389,22 @@ char Provider::return_name()
 ///////////////////////////////
 
 Service::Service(){}
-Service::Service(const char * _Name, int _ServiceCode, int _Date[8], int _DateTime[14], Provider * p, Member * m, double _Fee)
+Service::Service(int _ServiceCode, char _Date[11], string _DateTime, Provider * p, Member * m, char _Comments[100])
 {
-    Name = new char[strlen(_Name) + 1];
-    strcpy(Name, _Name);
-    ServiceCode = _ServiceCode;
+    service_code = _ServiceCode;
 
-    for(int i = 0; i < 8; ++i)
-        Date[i] = _Date[i];
-    for(int j = 0; j < 14; ++j)
-        DateTime[j] = _DateTime[j];
+    dateTime = _DateTime;
+
+    for(int i = 0; i < 11; ++i)
+        date[i] = _Date[i];
+    for(int k = 0; k < 100; ++k)
+        comments[k] = _Comments[k];
 
     provider = new Provider(*p);
     member = new Member(*m);
-    Fee = _Fee;
 }
 Service::~Service()
 {
-    if(Name) delete [] Name;
     if(provider) delete provider;
     if(member) delete member;
 }
-
-
-

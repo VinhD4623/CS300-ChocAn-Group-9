@@ -3,10 +3,9 @@
 
 class Terminal{
     public:
-        void login_with_id();
 
     private:
-        int id_number;
+      
 };
 
 #endif

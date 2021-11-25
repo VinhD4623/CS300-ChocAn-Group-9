@@ -5,6 +5,7 @@
 #include "util.h"
 #include <iomanip>
 #include <cstring>
+#include <string>
 ///////////////////////////////////////////////////
 // Junfei SUn
 // Address, Member, Provider, Service Class
@@ -77,18 +78,17 @@ class Provider
 class Service
 {
     public:
-        char * Name;
-        int ServiceCode;
-        // MMDDYYYY
-        int Date[8];
-        // MMDDYYYYHHMMSS
-        int DateTime[14];
+        int service_code;
+        // MM-DD-YYYY
+        char date[11];
+        // MM-DD-YYYY HH-MM-SS
+        string dateTime;
         Provider * provider;
         Member * member;
-        double Fee;
+        char comments[100];
 
         Service();
-        Service(const char * _Name, int _ServiceCode, int _Date[8], int _DateTime[14], Provider * p, Member * m, double _Fee);
+        Service(int _ServiceCode, char _Date[11], string _DateTime, Provider * p, Member * m, char _Comments[100]);
         ~Service();
 };
 

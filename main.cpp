@@ -21,11 +21,7 @@ void login(){
 
 int main()
 {
-   ProviderTerminal *p_terminal = new ProviderTerminal();
-
    login();
-
-   delete(p_terminal);
 
    return 0;
 }
