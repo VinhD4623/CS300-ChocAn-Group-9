@@ -1,3 +1,6 @@
+#ifndef PROVIDERDIRECTORY_H
+#define PROVIDERDIRECTORY_H
+
 #include <iostream>
 #include <list>
 #include <fstream>
@@ -46,3 +49,5 @@ class ProviderDirectory
         int editProvider(char * name);
         int printList(pnode * );
 };
+
+#endif

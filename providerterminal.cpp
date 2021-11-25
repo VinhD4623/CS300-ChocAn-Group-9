@@ -88,4 +88,7 @@ void ProviderTerminal::create_service_report(){
 
     //Data structure for services
     //needs to also be cleaned up
+
+
+    //Display fee for the service
 }
