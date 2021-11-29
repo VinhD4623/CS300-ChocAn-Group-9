@@ -1,5 +1,6 @@
 #include "providerterminal.h"
 #include "info.h"
+#include "util.h"
 #include <ctime>
 #include <string>
 
@@ -15,26 +16,32 @@ ProviderTerminal::~ProviderTerminal(){
     if(current_member) delete current_member;
 }
 
-void ProviderTerminal::run_terminal(){
-
-    //Provider logs in with there ID number
-    this->provider_login();
-    
-
-    //check that the member/member number is valid or not
-    this->check_member_validation();
-
-
-    //Create a new service that was provided to a member
-    this->bill_member();
-
-}
-
-//Get provider ID number
 void ProviderTerminal::provider_login(){
+    //Provider logs in with there ID number
     this->current_provider->ID = read_int_maxdigits("Enter your Provider ID number", 9);
+    
+    while(this->run_terminal());
 }
 
+int ProviderTerminal::run_terminal(){
+    
+    cout << "\nWhat would you like to do?" << endl;
+    cout << "1. Record a service you provided" << endl;
+    cout << "2. Quit" << endl;
+    int option = read_int_wbounds("", 1, 2); 
+
+    if(option == 1){
+        //check that the member/member number is valid or not
+        this->check_member_validation();
+
+        //Create a new service that was provided to a member
+        this->bill_member();
+    } else if(option == 2){
+        return 0;
+    }
+
+    return 1;
+}
 
 //Gets input for terminal fot eh member ID and checks that it matches 
 //a member number that already exists with in the member files
@@ -85,6 +92,10 @@ void ProviderTerminal::create_service_report(){
     new_service->service_code = read_int_maxdigits("Enter corresponding service code of the service provided", 6);
 
     read_string("Enter any additional comments about the service provided (max 100 char)\n", new_service->comments, 100);
+
+    data_center->append(new_service);
+
+    data_center->print_provided_list();
 
     //Data structure for services
     //needs to also be cleaned up

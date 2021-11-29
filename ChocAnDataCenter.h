@@ -6,6 +6,8 @@
 
 class ChocAnDataCenter{
     public:
+        void append(Service *);
+        void print_provided_list();
 
         ChocAnDataCenter();
         ~ChocAnDataCenter();

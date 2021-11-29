@@ -6,22 +6,30 @@
 
 using namespace std;
 
-void login(){
-   cout << "\n\nEnter 1 to log in as a Provider" << endl << "Enter 2 to log in as a Manager" << endl;
-   int login_choice = read_int_wbounds("", 1, 2); 
+int login(ProviderTerminal *p_terminal){
+
+   cout << "\n\nEnter 1 to log in as a Provider" << endl << "Enter 2 to log in as a Manager" << endl << "Enter 3 to exit" << endl;
+   int login_choice = read_int_wbounds("", 1, 3); 
 
    if(login_choice == 1){
-      ProviderTerminal *p_terminal = new ProviderTerminal();
-      p_terminal->run_terminal();
+      p_terminal->provider_login();
    }
-   else{
+   else if(login_choice == 2){
       //create manager terminal object here
    }
+   else{
+      return 0;
+   }
+   return 1;
 }
 
 int main()
 {
-   login();
+   ProviderTerminal *p_terminal = new ProviderTerminal();
+
+   while(login(p_terminal));
+
+   if(p_terminal) delete p_terminal;
 
    return 0;
 }

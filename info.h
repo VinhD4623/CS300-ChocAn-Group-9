@@ -87,6 +87,8 @@ class Service
         Member * member;
         char comments[100];
 
+        void print();
+
         Service();
         Service(int _ServiceCode, char _Date[11], string _DateTime, Provider * p, Member * m, char _Comments[100]);
         ~Service();

@@ -266,7 +266,7 @@ void Member::display()
 //Provider Class
 ///////////////////////////////
 Provider::Provider()
-{
+{ 
     Name = NULL;
 }
 
@@ -403,8 +403,18 @@ Service::Service(int _ServiceCode, char _Date[11], string _DateTime, Provider * 
     provider = new Provider(*p);
     member = new Member(*m);
 }
-Service::~Service()
-{
-    if(provider) delete provider;
-    if(member) delete member;
+
+void Service::print(){
+    cout << endl << "Service Code: " << this->service_code << endl;
+    cout << "Date Service was Provided: " << this->date << endl;
+    cout << "Date Service was Recorded: " << this->dateTime << endl;
+    if(this->provider->Name)
+        cout << "Name of the Provider: " << this->provider->Name << endl;
+    if(this->member->Name)     
+        cout << "Name of the Member: " << this->member->Name << endl;
+
+    cout << "Additional Comments: " << this->comments << endl << endl;
 }
+
+Service::~Service()
+{}

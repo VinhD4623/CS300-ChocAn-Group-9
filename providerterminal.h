@@ -8,7 +8,7 @@ class ProviderTerminal : public Terminal{
     public:
         void provider_login();
         void check_member_validation();
-        void run_terminal();
+        int run_terminal();
         void bill_member();
         void create_service_report();
 
