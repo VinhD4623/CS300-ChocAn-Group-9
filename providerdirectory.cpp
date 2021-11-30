@@ -94,12 +94,16 @@ int ProviderDirectory::removeProvider(pnode *& head, char * name)
 }
 
 
+
+//Clears the entire directory
 int ProviderDirectory::clear()
 {
     if(!head) return 0;
     return clear(head);
 }
 
+
+//Helper that traverse and clears the entire directory
 int ProviderDirectory::clear(pnode *& head)
 {
     if(!head) return 0;
@@ -111,22 +115,44 @@ int ProviderDirectory::clear(pnode *& head)
 
 }
 
+
+//Search a provider to edit their information
 int ProviderDirectory::editProvider()
 {
-
-    return 0;
+    if(!head) return 0; //Empty provider list
+    char name[32];
+    read_string("Name of provider to edit: ", name, 32);
+    
+    int found = editProvider(head, name);
+    if(found == 0){
+        cout << "\nNo matching name in provider directory\n";
+        return 0;
+    }
+    else return 1;
 }
 
 
+//Helper to travers through the directory to find the matching provider by name
+int ProviderDirectory::editProvider(pnode * head, char * name)
+{
+    if(!head) return 0;
+    if(head->provider.compare(name) == 1){
+        head->provider.edit_provider();
+        return 1;
+    }
+    return editProvider(head->next, name);
+}
 
 
-
+//Prints the entire directory
 int ProviderDirectory::printList()
 {
     if(!head) return 0;
     return printList(head);
 }
-        
+
+
+//Helper to traverse and print the entire directory
 int ProviderDirectory::printList(pnode * head)
 {
     if(!head) return 1;
@@ -135,24 +161,45 @@ int ProviderDirectory::printList(pnode * head)
     return printList(head->next);
 }
 
+
+//Saves the provider directory into file
 int ProviderDirectory::writeToFile()
 {
-    char filename[101];
+    string filename;
+    filename = "providerDirectory.txt";
     fstream outFile;
 
-    read_string("Name of file: ", filename, 101);
+    //read_string("Name of file: ", filename, 101);
     outFile.open(filename, ios::out);
     if(outFile.is_open()){
         while(head){
-            outFile << head->provider.Name << ";"
-                    << head->provider.ID << ";"
-                    << head->provider.TotalMember << ";"
-                    << head->provider.TotalFee << "\n";
-
+            outFile << head->provider.Name << "\n"
+                    << head->provider.ID << "\n"
+                    << head->provider.TotalMember << "\n"
+                    << head->provider.TotalFee << "\n"
+                    << ".\n";
+            /*
+            if(head->serviceList.head){
+                outFile << head->serviceList.head->serviceservice_code << "\n"
+                        << head->serviceList.head->service.datetime << "\n"
+                        << head->serviceList.head->service.comments << "\n"
+                        << "..\n";
+            }
+            */
             head = head->next;
         }
         outFile.close();
     }
 
     return 0;
+}
+
+//Reads in from file 
+int ProviderDirectory::loadDirectory()
+{
+    string filename;
+    filename = "providerDirectory.txt";
+
+
+
 }
