@@ -20,11 +20,12 @@ struct pnode
     psd_node * head;    //List of provider services that are offered by a provider
     pnode * next;
 
-    int addService(pnode *, string name);
-    int removeService(pnode *, string name, int serviceID);
-    int findService(pnode *, int serviceID);
-    int printService(pnode *, int serviceID);
-    int PrintAllService(pnode *);
+    int addService(psd_node*, int serviceID);
+    int removeService(psd_node *, int serviceID);
+    int findService(psd_node *, int serviceID);
+    int printService(psd_node *, int serviceID);
+    int PrintAllService(psd_node *);
+    int clearServices(psd_node *);
 };
 
 class ProviderDirectory
