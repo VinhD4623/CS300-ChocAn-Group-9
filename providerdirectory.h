@@ -19,6 +19,12 @@ struct pnode
     Provider provider;              
     psd_node * head;    //List of provider services that are offered by a provider
     pnode * next;
+
+    int addService(pnode *, string name);
+    int removeService(pnode *, string name, int serviceID);
+    int findService(pnode *, int serviceID);
+    int printService(pnode *, int serviceID);
+    int PrintAllService(pnode *);
 };
 
 class ProviderDirectory
@@ -57,11 +63,6 @@ class ProviderDirectory
         int editProvider(pnode *, char * name);
         int printList(pnode * );
 
-        int addService(pnode *, string name);
-        int removeService(pnode *, string name, int serviceID);
-        int findService(pnode *, int serviceID);
-        int printService(pnode *, int serviceID);
-        int PrintAllService(pnode *);
 };
 
 #endif

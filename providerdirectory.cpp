@@ -162,6 +162,13 @@ int ProviderDirectory::printList(pnode * head)
 }
 
 
+
+
+
+/****************************************************
+* File read and write
+*****************************************************/
+
 //Saves the provider directory into file
 int ProviderDirectory::writeToFile()
 {
@@ -203,3 +210,40 @@ int ProviderDirectory::loadDirectory()
 
 
 }
+
+
+
+/****************************************************************
+* Service list for each provider 
+******************************************************************/
+int ProviderDirectory::addService()
+{
+
+}
+
+
+int ProviderDirectory::removeService()
+{
+
+}
+
+
+int ProviderDirectory::findService()
+{
+
+
+}
+
+
+int ProviderDirectory::printService()
+{
+
+}
+
+
+
+int ProviderDirectory::PrintAllService()
+{
+
+}
+
