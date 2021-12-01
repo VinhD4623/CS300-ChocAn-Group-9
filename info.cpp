@@ -10,9 +10,11 @@ using namespace std;
 //Constructor
 Address::Address()
 {
+    /*
     Street = NULL;
     City = NULL;
     State = NULL;
+    */
 }
 
 
@@ -23,7 +25,7 @@ Address::Address(const Address & source)
 }
 
 //Copy constuctor
-Address::Address(const char * _Street, const char * _City, const char * _State, int _ZIP)
+Address::Address(const string _Street, const string _City, const string _State, int _ZIP)
 {
     copy_address(_Street, _City, _State, _ZIP);
 }
@@ -31,19 +33,21 @@ Address::Address(const char * _Street, const char * _City, const char * _State, 
 //Destructor
 Address::~Address()
 {
+    Street.clear();
+    City.clear();
+    State.clear();
+    /*
     if(Street) delete [] Street;
     if(City) delete [] City;
     if(State) delete [] State;
+    */
 }
 
 
 //Copy the contents of another address
-void Address::copy_address(const char * _Street, const char * _City, const char * _State, int _ZIP)
+void Address::copy_address(const string _Street, const string _City, const string _State, int _ZIP)
 {   
-    if(Street){
-        delete [] Street;
-        Street = NULL;
-    }
+    /*
     Street = new char[strlen(_Street) + 1];
     strcpy(Street,_Street);
 
@@ -59,7 +63,10 @@ void Address::copy_address(const char * _Street, const char * _City, const char 
     }
     State = new char[strlen(_State) + 1];
     strcpy(State,_State);
-
+    */
+    Street = _Street;
+    City = _City;
+    State = _State;
     ZIP = _ZIP;
 }
 
@@ -90,34 +97,46 @@ int Address::edit_address()
         cout << "A: Street \nB: City \nC: State \nD: ZIP \nQ: Quit\n";
         choice = read_cmd();
         if(choice == 'A'){
+            
             char new_Street[MAXCHAR];
             read_string("Street: ", new_Street, MAXCHAR);
+            Street = new_Street;
+            /*
             if(Street){
                 delete [] Street;
                 Street = NULL;
             }
+            
             Street = new char[strlen(new_Street)];
             strcpy(Street, new_Street);
+            */
+           
         }
         else if(choice == 'B'){
             char new_City[MAXCHAR];
             read_string("City: ", new_City, MAXCHAR);
+            City = new_City;
+            /*
             if(City){
                 delete [] City;
                 City = NULL;
             }
             City = new char[strlen(new_City)];
             strcpy(City, new_City);
+            */
         }
         else if(choice == 'C'){
             char new_State[MAXCHAR];
             read_string("State: ", new_State, MAXCHAR);
+            State = new_State;
+            /*
             if(State){
                 delete [] State;
                 State = NULL;
             }
             State = new char[strlen(new_State)];
             strcpy(State, new_State);
+            */
         }
         else if(choice == 'D'){
             ZIP = read_int("Zip: ");
@@ -267,7 +286,7 @@ void Member::display()
 ///////////////////////////////
 Provider::Provider()
 { 
-    Name = NULL;
+   // Name = NULL;
 }
 
 Provider::Provider(const Provider & source)
@@ -276,24 +295,28 @@ Provider::Provider(const Provider & source)
 }
 
 
-Provider::Provider(const char * _Name, int _ID, const Address & A, int _TotalMember, double _TotalFee)
+Provider::Provider(const string _Name, int _ID, const Address & A, int _TotalMember, double _TotalFee)
 {
     copy_provider(_Name, _ID, A, _TotalMember, _TotalFee);
 }
 
 Provider::~Provider()
 {
-    if(Name) delete [] Name;
+    Name.clear();
+    //if(Name) delete [] Name;
 }
 
-void Provider::copy_provider(const char * _Name, int _ID, const Address & A, int _TotalMember, double _TotalFee)
+void Provider::copy_provider(const string _Name, int _ID, const Address & A, int _TotalMember, double _TotalFee)
 {
+    /*
     if(Name){
         delete [] Name;
         Name = NULL;
     }
     Name = new char[strlen(_Name) + 1];
     strcpy(Name,_Name);
+    */
+    Name = _Name;
     ID = _ID; 
     address.copy_address(A.Street, A.City, A.State, A.ZIP);
     TotalMember = _TotalMember;
@@ -304,13 +327,18 @@ void Provider::copy_provider(const char * _Name, int _ID, const Address & A, int
 int Provider::read_provider()
 {
     char new_Name[MAXCHAR];
+    /*
     if(Name){
         delete [] Name;
         Name = NULL;
     }
+    */
     read_string("Name: ", new_Name, MAXCHAR);
+    Name = new_Name;
+    /*
     Name = new char[strlen(new_Name) + 1];
     strcpy(Name, new_Name);
+    */
 
     ID = read_int("ID: ");
     address.read_address();
@@ -332,13 +360,16 @@ int Provider::edit_provider()
         choice = read_cmd();
         if(choice == 'A'){
             char new_Name[MAXCHAR];
-            read_string("Name: ", Name, MAXCHAR);
+            read_string("Name: ", new_Name, MAXCHAR);
+            Name = new_Name;
+            /*
             if(Name){
                 delete [] Name;
                 Name = NULL;
             }
             Name = new char[strlen(new_Name) + 1];
             strcpy(Name, new_Name);
+            */
         }
         else if(choice == 'B'){
             ID = read_int("ID: ");
@@ -368,9 +399,15 @@ void Provider::display()
 }
 
 
-int Provider::compare(char * name)
+int Provider::compare(string name)
 {
+    /*
     if(!strcasecmp(Name, name))
+        return 1;
+    else
+        return 0;
+    */
+    if(Name.compare(name) < 0)
         return 1;
     else
         return 0;
@@ -408,7 +445,7 @@ void Service::print(){
     cout << endl << "Service Code: " << this->service_code << endl;
     cout << "Date Service was Provided: " << this->date << endl;
     cout << "Date Service was Recorded: " << this->dateTime << endl;
-    if(this->provider->Name)
+    if(!this->provider->Name.empty())
         cout << "Name of the Provider: " << this->provider->Name << endl;
     if(this->member->Name)     
         cout << "Name of the Member: " << this->member->Name << endl;

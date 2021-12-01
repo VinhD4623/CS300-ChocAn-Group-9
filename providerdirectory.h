@@ -39,7 +39,6 @@ class ProviderDirectory
         int writeToFile();
         int loadDirectory();
 
-        int createReport(); 
 
     private:
         pnode * head;

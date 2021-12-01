@@ -16,17 +16,17 @@
 class Address
 {
     public:
-        char * Street;
-        char * City;
-        char * State;
+        string Street;
+        string City;
+        string  State;
         int ZIP;
 
         Address();
         Address(const Address & source);
-        Address(const char * _Street, const char * _City, const char * _State, int _ZIP);
+        Address(const string _Street, const string _City, const string _State, int _ZIP);
         ~Address();
 
-        void copy_address(const char * _Street, const char * _City, const char * _State, int _ZIP);
+        void copy_address(const string _Street, const string _City, const string _State, int _ZIP);
         int read_address();
         int edit_address();
         void display();
@@ -55,7 +55,7 @@ class Member
 class Provider
 {
     public:
-        char * Name;
+        string Name;
         int ID;
         Address address;
         int TotalMember;
@@ -63,14 +63,14 @@ class Provider
 
         Provider();
         Provider(const Provider &);
-        Provider(const char * , int _ID, const Address &, int , double );
+        Provider(const string , int _ID, const Address &, int , double );
         ~Provider();
 
-        void copy_provider(const char * , int _ID, const Address &, int , double );
+        void copy_provider(const string , int _ID, const Address &, int , double );
         int read_provider();
         int edit_provider();
         void display();
-        int compare(char *);
+        int compare(string);
         char return_name();
 
 };

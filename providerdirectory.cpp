@@ -199,7 +199,6 @@ int ProviderDirectory::writeToFile()
     filename = "providerDirectory.txt";
     fstream outFile;
 
-    //read_string("Name of file: ", filename, 101);
     outFile.open(filename, ios::out);
     if(outFile.is_open()){
         while(head){
@@ -207,33 +206,94 @@ int ProviderDirectory::writeToFile()
                     << head->provider.ID << "\n"
                     << head->provider.TotalMember << "\n"
                     << head->provider.TotalFee << "\n"
+                    << head->provider.address.Street << "\n"
+                    << head->provider.address.City << "\n"
+                    << head->provider.address.State << "\n"
+                    << head->provider.address.ZIP << "\n"
                     << ".\n";
-            /*
-            if(head->serviceList.head){
-                outFile << head->serviceList.head->serviceservice_code << "\n"
-                        << head->serviceList.head->service.datetime << "\n"
-                        << head->serviceList.head->service.comments << "\n"
-                        << "..\n";
-            }
-            */
             head = head->next;
         }
         outFile.close();
     }
 
-    return 0;
+    return 1;
 }
 
 
-//Reads in from file 
+//Loads the directory from file to recreate the directory
 int ProviderDirectory::loadDirectory()
 {
     string filename;
     filename = "providerDirectory.txt";
+    
+    ifstream inFile;
+    inFile.open(filename);
+    if(!inFile){
+        inFile.clear();
+        cerr << endl << "Fail to open " << filename
+			<< " for input!" << endl << endl;
+		return 0;
+    }
+
+    string name;
+    int id;
+    Address address;
+    int totalMem;
+    double totalFee;
+    string street;
+    string city;
+    string state;
+    int zip;
 
 
+    while(!inFile.eof()){
+        getline(inFile, name);
+    
+        inFile >> id;
+        inFile >> totalMem;
+        inFile >> totalFee;
+        inFile.get();
+        getline(inFile, street);
+        getline(inFile, city);
+        getline(inFile, state);
+        inFile >> zip;
+        inFile.ignore(100, '.');
+        inFile.get();
+        
+        pnode * obj = new pnode();
+        address.copy_address(street, city, state, zip);
+        obj->provider.copy_provider(name, id, address, totalMem, totalFee);
 
+        addProvider(head, obj);
+    }
+    
+    inFile.close();
 }
 
+/*
+int ProviderDirectory::createReport()
+{
+    string filename;
+    filename = "providerReport.txt";
+    fstream outFile;
+
+    outFile.open(filename, ios::out);
+    if(outFile.is_open()){
+            outFile << "Name: " << head->provider.Name << "\n"
+                    << "ID nunber: " << head->provider.ID << "\n"
+                    << "Street: " << head->provider.address.Street << "\n"
+                    << "City: " << head->provider.address.City << "\n"
+                    << "State: " << head->provider.address.State << "\n"
+                    << "Zip: " << head->provider.address.ZIP << "\n"
+                    << "Total number of consultations with members" << head->provider.TotalMember << "\n"
+                    << "Total fee for the week:" << head->provider.TotalFee << "\n"
+                    << ".\n";
+        }
+        outFile.close();
+    }
+
+    return 1;
+}
+*/
 
 

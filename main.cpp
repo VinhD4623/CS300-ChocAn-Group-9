@@ -25,11 +25,25 @@ int login(ProviderTerminal *p_terminal){
 
 int main()
 {
+   
    ProviderTerminal *p_terminal = new ProviderTerminal();
 
    while(login(p_terminal));
 
    if(p_terminal) delete p_terminal;
-
+   
+   /*
+   ProviderDirectory obj;
+   obj.addProvider();
+   obj.printList();
+   obj.addProvider();
+   obj.printList();
+   
+   obj.writeToFile();
+   obj.clear();
+   obj.loadDirectory();
+   obj.printList();
+   */
+   
    return 0;
 }
