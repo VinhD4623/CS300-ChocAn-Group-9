@@ -93,6 +93,27 @@ int ProviderDirectory::removeProvider(pnode *& head, char * name)
 
 }
 
+//Search to display a specific provider
+int ProviderDirectory::searchProvider()
+{
+    if(!head) return 0;
+    char searchname[64];
+    read_string("Name of provider to search: ", searchname, 64);
+    string name = searchname;
+    return searchProvider(head, name);
+}
+
+
+//Helper to traverse the list to find a provider by name
+int ProviderDirectory::searchProvider(pnode * head, string name)
+{
+    if(!head) return 0;
+    if(head->provider.compare(name) == 0){
+        head->provider.display();
+        return 1;
+    }
+    return searchProvider(head->next, name);
+}
 
 
 //Clears the entire directory
@@ -185,7 +206,19 @@ int ProviderDirectory::printList(pnode * head)
 }
 
 
+int ProviderDirectory::validate(const int id)
+{
+    if(!head) return 0;
+    return validate(head, id);
+}
 
+int ProviderDirectory::validate(pnode * head, int id)
+{
+    if(!head) return 0;
+    if(head->provider.ID == id)
+        return 1;
+    return validate(head->next, id);
+}
 
 
 /****************************************************
@@ -268,6 +301,7 @@ int ProviderDirectory::loadDirectory()
     }
     
     inFile.close();
+    return 0;
 }
 
 /*
