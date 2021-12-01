@@ -132,11 +132,34 @@ int ProviderDirectory::editProvider()
 }
 
 
+
+
 //Helper to travers through the directory to find the matching provider by name
 int ProviderDirectory::editProvider(pnode * head, char * name)
 {
     if(!head) return 0;
     if(head->provider.compare(name) == 1){
+     /* int cmd;
+        do{
+        cout << "What do you want to edit?\n\n";
+        cout << "1.) Personal information\n"
+            << "2.) Add service\n"
+            << "3.) Remove service\n"
+            << "4.) Exit\n\n";
+            cmd = read_int("Selection: ");
+
+            switch(cmd){
+                case 1:
+                    head->provider.edit_provider();
+                    break;
+                case 2:
+                    head->addService()
+                case 3:
+
+                case 4:
+            }
+        }while(cmd != 4)
+        */ 
         head->provider.edit_provider();
         return 1;
     }
@@ -201,6 +224,7 @@ int ProviderDirectory::writeToFile()
     return 0;
 }
 
+
 //Reads in from file 
 int ProviderDirectory::loadDirectory()
 {
@@ -212,38 +236,4 @@ int ProviderDirectory::loadDirectory()
 }
 
 
-
-/****************************************************************
-* Service list for each provider 
-******************************************************************/
-int ProviderDirectory::addService()
-{
-
-}
-
-
-int ProviderDirectory::removeService()
-{
-
-}
-
-
-int ProviderDirectory::findService()
-{
-
-
-}
-
-
-int ProviderDirectory::printService()
-{
-
-}
-
-
-
-int ProviderDirectory::PrintAllService()
-{
-
-}
 
