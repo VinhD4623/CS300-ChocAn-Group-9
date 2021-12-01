@@ -41,15 +41,14 @@ class ProviderDirectory
 
         int createReport(); 
 
-        //Provider Services
-        int addService();
-        int removeService();
-        int findService();
-        int printService();
-        int PrintAllService();
-
     private:
         pnode * head;
+        
+        int addProvider(pnode *&, pnode *);
+        int removeProvider(pnode *&, char * name);
+        int clear(pnode *& head);
+        int editProvider(pnode *, char * name);
+        int printList(pnode * );
 
 };
 
