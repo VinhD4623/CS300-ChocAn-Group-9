@@ -63,7 +63,6 @@ int read_int(const char prompt[])
 		cout << '\n' << "Invalid input!" << '\n';
 		cout << '\n' << prompt;
 		cin >> num;
-		cin.ignore();
 	}
 	cin.ignore(100, '\n');
 	return num;	
@@ -83,7 +82,6 @@ int read_int_wbounds(const char prompt[], int lower_bound, int upper_bound)
 		cout << '\n' << "Invalid input!" << '\n';
 		cout << '\n' << prompt;
 		cin >> num;
-		cin.ignore();
 	}
 	cin.ignore(100, '\n');
 	return num;	
