@@ -20,3 +20,26 @@ void ChocAnDataCenter::append(Service *new_service){
 void ChocAnDataCenter::print_provided_list(){
     provided_service_directory->print_list();
 }
+
+void ChocAnDataCenter::addProvider(){
+    provider_directory->addProvider();
+}
+
+void ChocAnDataCenter::searchProvider(){
+    provider_directory->searchProvider();
+}
+
+void ChocAnDataCenter::removeProvider(){
+    provider_directory->removeProvider();
+}
+
+void ChocAnDataCenter::editProvider(){
+    provider_directory->editProvider();
+}
+
+void ChocAnDataCenter::saveProviderDirectory(){
+    provider_directory->writeToFile();
+}
+void ChocAnDataCenter::loadProviderDirectory(){
+    provider_directory->loadDirectory();
+}

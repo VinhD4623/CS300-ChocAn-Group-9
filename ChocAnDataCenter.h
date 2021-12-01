@@ -8,6 +8,13 @@ class ChocAnDataCenter{
     public:
         void append(Service *);
         void print_provided_list();
+        
+        void addProvider();
+        void removeProvider();
+        void editProvider();
+        void searchProvider();
+        void saveProviderDirectory();
+        void loadProviderDirectory();
 
         ChocAnDataCenter();
         ~ChocAnDataCenter();

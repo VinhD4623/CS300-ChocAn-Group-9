@@ -34,6 +34,8 @@ class ProviderDirectory
         int editProvider();
         int printList();
         int searchProvider();
+
+        int validate(const int);
         
         //Provider Directory file read/write
         int writeToFile();
@@ -48,6 +50,9 @@ class ProviderDirectory
         int clear(pnode *& head);
         int editProvider(pnode *, char * name);
         int printList(pnode * );
+        int searchProvider(pnode *, string search);
+
+        int validate(pnode *, const int);
 
 };
 
