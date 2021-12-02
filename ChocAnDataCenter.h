@@ -15,6 +15,8 @@ class ChocAnDataCenter{
         void searchProvider();
         void saveProviderDirectory();
         void loadProviderDirectory();
+        void createProviderReport();
+        
 
         ChocAnDataCenter();
         ~ChocAnDataCenter();

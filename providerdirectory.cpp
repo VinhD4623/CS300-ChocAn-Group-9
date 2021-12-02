@@ -304,30 +304,44 @@ int ProviderDirectory::loadDirectory()
     return 0;
 }
 
-/*
 int ProviderDirectory::createReport()
 {
-    string filename;
-    filename = "providerReport.txt";
-    fstream outFile;
-
-    outFile.open(filename, ios::out);
-    if(outFile.is_open()){
-            outFile << "Name: " << head->provider.Name << "\n"
-                    << "ID nunber: " << head->provider.ID << "\n"
-                    << "Street: " << head->provider.address.Street << "\n"
-                    << "City: " << head->provider.address.City << "\n"
-                    << "State: " << head->provider.address.State << "\n"
-                    << "Zip: " << head->provider.address.ZIP << "\n"
-                    << "Total number of consultations with members" << head->provider.TotalMember << "\n"
-                    << "Total fee for the week:" << head->provider.TotalFee << "\n"
-                    << ".\n";
-        }
-        outFile.close();
-    }
-
-    return 1;
+    if(!head) return 0;
+    return createReport(head);
 }
-*/
+
+int ProviderDirectory::createReport(pnode * head)
+{
+    if(!head) return 0;
+    string path;
+    string filename;
+    string id;
+
+    path = "providerReports/";
+    filename = "provider_Report";
+    id = to_string(head->provider.ID);
+
+    filename.append(id);
+    filename.append(".txt");
+    path.append(filename);
+
+    fstream outFile;
+    //outFile.out(".\\providerReports");
+    outFile.open(path, ios::out);
+    if(outFile.is_open()){
+        outFile << "Name: " << head->provider.Name << "\n"
+                << "ID nunber: " << head->provider.ID << "\n"
+                << "Street: " << head->provider.address.Street << "\n"
+                << "City: " << head->provider.address.City << "\n"
+                << "State: " << head->provider.address.State << "\n"
+                << "Zip: " << head->provider.address.ZIP << "\n"
+                << "Total number of consultations with members" << head->provider.TotalMember << "\n"
+                << "Total fee for the week:" << head->provider.TotalFee << "\n"
+                << ".\n";
+    }
+    outFile.close();
+
+    return 1 + createReport(head->next);
+}
 
 

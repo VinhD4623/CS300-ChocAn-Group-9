@@ -41,6 +41,8 @@ class ProviderDirectory
         int writeToFile();
         int loadDirectory();
 
+        int createReport();
+
 
     private:
         pnode * head;
@@ -53,6 +55,7 @@ class ProviderDirectory
         int searchProvider(pnode *, string search);
 
         int validate(pnode *, const int);
+        int createReport(pnode *);
 
 };
 

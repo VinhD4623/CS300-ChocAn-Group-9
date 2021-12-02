@@ -20,8 +20,8 @@ int login(ProviderTerminal *p_terminal, ManagerTerminal *m_terminal){
       if(m_terminal->manager_login() == 1)
          m_terminal->run_terminal();
       else{
-         cout << endl << "Invalid manager ID number has been entered...." << endl;
-         return 0;
+         cout << endl << "Invalid manager ID number has been entered .... returning login menu." << endl;
+         return 1;
       }
    }
    else{
@@ -32,7 +32,8 @@ int login(ProviderTerminal *p_terminal, ManagerTerminal *m_terminal){
 
 int main()
 {
-   
+  
+   /*
    ProviderTerminal *p_terminal = new ProviderTerminal();
    ManagerTerminal *m_terminal = new ManagerTerminal();
 
@@ -40,11 +41,13 @@ int main()
    
    if(p_terminal) delete p_terminal;
    if(m_terminal) delete m_terminal;
-   /*
+   */
    ProviderDirectory obj;
    obj.addProvider();
-   obj.printList();
+   //obj.printList();
    obj.addProvider();
+   obj.createReport();
+   /*
    obj.printList();
    
    obj.writeToFile();
