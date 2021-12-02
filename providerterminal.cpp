@@ -94,7 +94,7 @@ void ProviderTerminal::create_service_report(){
     read_string("Enter any additional comments about the service provided (max 100 char)\n", new_service->comments, 100);
 
     data_center->append(new_service);
-
+    data_center->addService(new_service);
     data_center->print_provided_list();
 
     //Data structure for services

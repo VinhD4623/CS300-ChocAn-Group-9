@@ -19,6 +19,7 @@ class ManagerTerminal: public Terminal
         void run_terminal();
         void edit_provider_menu();
         void edit_member_menu();
+        
 
         int addMember();
         int editMember();

@@ -40,6 +40,15 @@ void ChocAnDataCenter::editProvider(){
 void ChocAnDataCenter::saveProviderDirectory(){
     provider_directory->writeToFile();
 }
+
 void ChocAnDataCenter::loadProviderDirectory(){
     provider_directory->loadDirectory();
+}
+
+void ChocAnDataCenter::createProviderReport(){
+    provider_directory->createReport();
+}
+
+void ChocAnDataCenter::addService(Service *& new_service){
+    provider_directory->addService(new_service);
 }

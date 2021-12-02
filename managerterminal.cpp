@@ -34,6 +34,7 @@ void ManagerTerminal::run_terminal()
             edit_member_menu();
             break;
         case 3: 
+            data_center->createProviderReport();
             break;
         default:
             break;
@@ -77,6 +78,8 @@ void ManagerTerminal::edit_provider_menu()
         }
     }while(cmd != 6);
 }
+
+
 
 void ManagerTerminal::edit_member_menu()
 {

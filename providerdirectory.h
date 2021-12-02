@@ -16,9 +16,16 @@ struct pnode
 {
     pnode();
     ~pnode();
-    Provider provider;              
-    psd_node * head;    //List of provider services that are offered by a provider
+    Provider provider;   
+    ProvidedServiceDirectory serviceList;           
+    //psd_node * service_head;    //List of provider services that are offered by a provider
     pnode * next;
+
+    int addService(psd_node *);
+    int removeService(psd_node *);
+    int printAllService(psd_node *);
+    int editService(psd_node *);
+
 };
 
 class ProviderDirectory
@@ -38,10 +45,13 @@ class ProviderDirectory
         int validate(const int);
         
         //Provider Directory file read/write
-        int writeToFile();
-        int loadDirectory();
+        int writeToFile();      //Saves all the providers information to file
+        int loadDirectory();    //Loads all the providers into list
+        int createReport();     //Create a report per provider into file 
 
-        int createReport();
+        int addService(Service *&);
+
+
 
 
     private:
@@ -56,6 +66,8 @@ class ProviderDirectory
 
         int validate(pnode *, const int);
         int createReport(pnode *);
+
+        int addService(pnode *, string name, Service *&);
 
 };
 

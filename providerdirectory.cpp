@@ -229,10 +229,13 @@ int ProviderDirectory::validate(pnode * head, int id)
 int ProviderDirectory::writeToFile()
 {
     string filename;
+    string path;
     filename = "providerDirectory.txt";
+    path = "providerList/";
+    path.append(filename);
     fstream outFile;
 
-    outFile.open(filename, ios::out);
+    outFile.open(path, ios::out);
     if(outFile.is_open()){
         while(head){
             outFile << head->provider.Name << "\n"
@@ -257,14 +260,13 @@ int ProviderDirectory::writeToFile()
 int ProviderDirectory::loadDirectory()
 {
     string filename;
-    filename = "providerDirectory.txt";
+    filename = "providerList/providerDirectory.txt";
     
     ifstream inFile;
     inFile.open(filename);
     if(!inFile){
         inFile.clear();
-        cerr << endl << "Fail to open " << filename
-			<< " for input!" << endl << endl;
+        cerr << endl << "Fail to open " << filename << endl << endl;
 		return 0;
     }
 
@@ -304,12 +306,16 @@ int ProviderDirectory::loadDirectory()
     return 0;
 }
 
+
+//Creates provider report 
 int ProviderDirectory::createReport()
 {
     if(!head) return 0;
     return createReport(head);
 }
 
+
+//Creates a provider report for each provider and saves to file 
 int ProviderDirectory::createReport(pnode * head)
 {
     if(!head) return 0;
@@ -326,8 +332,8 @@ int ProviderDirectory::createReport(pnode * head)
     path.append(filename);
 
     fstream outFile;
-    //outFile.out(".\\providerReports");
     outFile.open(path, ios::out);
+
     if(outFile.is_open()){
         outFile << "Name: " << head->provider.Name << "\n"
                 << "ID nunber: " << head->provider.ID << "\n"
@@ -335,9 +341,9 @@ int ProviderDirectory::createReport(pnode * head)
                 << "City: " << head->provider.address.City << "\n"
                 << "State: " << head->provider.address.State << "\n"
                 << "Zip: " << head->provider.address.ZIP << "\n"
-                << "Total number of consultations with members" << head->provider.TotalMember << "\n"
-                << "Total fee for the week:" << head->provider.TotalFee << "\n"
-                << ".\n";
+                << "Total number of consultations with members:" << head->provider.TotalMember << "\n"
+                << "Total fee for the week:" << head->provider.TotalFee << "\n";
+
     }
     outFile.close();
 
@@ -345,3 +351,56 @@ int ProviderDirectory::createReport(pnode * head)
 }
 
 
+
+/******************************
+ *  Provider List of Services
+*******************************/
+
+
+int ProviderDirectory::addService(Service *& new_service)
+{
+    if(!head) return 0;
+    /*
+    char searchname[64];
+    read_string("Name of provider to add services: ", searchname, 64);
+    string name = searchname;
+    */
+
+    return addService(head, new_service->provider->Name, new_service);
+}
+
+int ProviderDirectory::addService(pnode * head, string name, Service *& new_service)
+{
+    if(!head) return 0;
+
+    if(head->provider.Name.compare(name) == 0){
+        Service * obj = new Service();
+        obj = new_service;
+        head->serviceList.append(obj);
+        /*
+        Service *new_service = new Service();
+        int serviceCode = read_int_maxdigits("Service code: ", 6);
+        read_string("Enter the date that the service was preformed (MM-DD-YYYY)\n", new_service->date, 11);
+
+        time_t now = time(0);
+        tm *ltm = localtime(&now);
+        string temp;
+        temp.append(to_string(1+ltm->tm_mon));
+        temp.append("-");
+        temp.append(to_string(ltm->tm_mday));
+        temp.append("-");
+        temp.append(to_string(1900+ltm->tm_year));
+        temp.append(" ");
+        temp.append(to_string(ltm->tm_hour));
+        temp.append(":");
+        temp.append(to_string(ltm->tm_min));
+        temp.append(":");
+        temp.append(to_string(ltm->tm_sec));
+
+        head->serviceList.append(new_service);
+        */
+        return 1;
+    }
+
+    return addService(head->next, name, new_service);
+}

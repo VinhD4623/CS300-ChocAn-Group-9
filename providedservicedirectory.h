@@ -21,6 +21,7 @@ class ProvidedServiceDirectory{
         psd_node * append(psd_node *&, psd_node *&);
         void print_list();
         void print_list(psd_node *&);
+        void getService(Service &);
 
         ProvidedServiceDirectory();
         ~ProvidedServiceDirectory();
