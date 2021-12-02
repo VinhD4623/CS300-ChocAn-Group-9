@@ -340,7 +340,7 @@ int Provider::read_provider()
     strcpy(Name, new_Name);
     */
 
-    ID = read_int("ID: ");
+    ID = read_int_maxdigits("ID: ", 9);
     address.read_address();
     TotalMember = read_int("Total number of members: ");
     TotalFee = read_double("Total fee: ");

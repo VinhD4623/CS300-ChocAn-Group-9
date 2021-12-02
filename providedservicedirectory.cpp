@@ -89,15 +89,8 @@ int ProvidedServiceDirectory::clear(psd_node *&head){
     return clear(temp);
 }
 
-void ProvidedServiceDirectory::getService(Service & obj){
-    if(!head) return;
-    
-    while(head){
-        for(int i = 0; i < 11; i++){
-              obj.date[i] = head->service->date[i];
-        }
-        //obj.date = head->service->date;
-        obj.member = head->service->member;
-    }
+//Append the services to the report
+void ProvidedServiceDirectory::writeToFile(string filename){
+
 }
 

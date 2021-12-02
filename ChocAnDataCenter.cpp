@@ -47,6 +47,7 @@ void ChocAnDataCenter::loadProviderDirectory(){
 
 void ChocAnDataCenter::createProviderReport(){
     provider_directory->createReport();
+    
 }
 
 void ChocAnDataCenter::addService(Service *& new_service){

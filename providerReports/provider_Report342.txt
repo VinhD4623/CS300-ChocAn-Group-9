@@ -1,9 +1,0 @@
-Name: jdfklasj
-ID nunber: 342
-Street: kjklj
-City: kjkj
-State: kj
-Zip: 3242
-Total number of consultations with members34
-Total fee for the week:34
-.

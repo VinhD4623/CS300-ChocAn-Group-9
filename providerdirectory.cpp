@@ -345,6 +345,7 @@ int ProviderDirectory::createReport(pnode * head)
                 << "Total fee for the week:" << head->provider.TotalFee << "\n";
 
     }
+    head->serviceList.writeToFile(path);
     outFile.close();
 
     return 1 + createReport(head->next);
