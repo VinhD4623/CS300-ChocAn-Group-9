@@ -76,7 +76,11 @@ void ManagerTerminal::edit_provider_menu()
                 data_center->removeProvider();
                 break;
             case 5:
+<<<<<<< HEAD
                 data_center->print_provider_list();
+=======
+                data_center->printProviderDirectory();
+>>>>>>> 8399cded8f427fae64c60b8a6e0c2fd32721d461
           
             default:
                 break;

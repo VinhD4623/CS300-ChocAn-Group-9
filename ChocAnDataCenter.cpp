@@ -33,6 +33,10 @@ void ChocAnDataCenter::searchProvider(){
     provider_directory->searchProvider();
 }
 
+void ChocAnDataCenter::printProviderDirectory(){
+    provider_directory->printList();
+}
+
 void ChocAnDataCenter::removeProvider(){
     provider_directory->removeProvider();
 }
@@ -51,7 +55,7 @@ void ChocAnDataCenter::loadProviderDirectory(){
 
 void ChocAnDataCenter::createProviderReport(){
     provider_directory->createReport();
-    
+
 }
 
 void ChocAnDataCenter::addService(Service *& new_service){

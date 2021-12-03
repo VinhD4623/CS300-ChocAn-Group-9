@@ -3,6 +3,7 @@
 
 #include "providerdirectory.h"
 #include "providedservicedirectory.h"
+#include "memberdirectory.h"
 
 class ChocAnDataCenter{
     public:
@@ -13,6 +14,7 @@ class ChocAnDataCenter{
         void removeProvider();
         void editProvider();
         void searchProvider();
+        void printProviderDirectory();
         void saveProviderDirectory();
         void loadProviderDirectory();
         void createProviderReport();
@@ -24,7 +26,7 @@ class ChocAnDataCenter{
         ~ChocAnDataCenter();
 
     private:
-        //MemberDirectory member_directory;
+        MemberDirectory * member_directory;
         ProviderDirectory *provider_directory;
         ProvidedServiceDirectory *provided_service_directory;
 

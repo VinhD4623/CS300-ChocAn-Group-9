@@ -1,0 +1,8 @@
+Name: vinh
+ID nunber: 987654321
+Street: askdfjk
+City: sakdljf
+State: df
+Zip: 343244
+Total number of consultations with members:234
+Total fee for the week:23
