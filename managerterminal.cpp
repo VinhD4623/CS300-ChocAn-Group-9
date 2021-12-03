@@ -71,7 +71,7 @@ void ManagerTerminal::edit_provider_menu()
                 data_center->removeProvider();
                 break;
             case 5:
-                data_center->print_provided_list();
+                data_center->printProviderDirectory();
           
             default:
                 break;
