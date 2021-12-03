@@ -171,7 +171,6 @@ void Address::display()
 //Constructor
 Member::Member()
 {
-    Name = NULL;
     ID = 0;
     Status = NULL;
 }
@@ -184,9 +183,9 @@ Member::Member(const Member & source)
 }
 
 //Copy constructor
-Member::Member(const char * _Name, int _ID, const Address & A, bool _Status)
+Member::Member(const string _Name, int _ID, const Address & _address, bool _Status)
 {
-    copy_member(_Name, _ID, A, _Status);
+    copy_member(_Name, _ID, _address, _Status);
 }
 
 
@@ -194,17 +193,16 @@ Member::Member(const char * _Name, int _ID, const Address & A, bool _Status)
 //Destructor
 Member::~Member()
 {
-    if(Name) delete [] Name;
+    Name.clear();
 }
 
 
 //Copy the passed in arguments to fill current Member fields
-void Member::copy_member(const char * _Name, int _ID, const Address & A, bool _Status)
+void Member::copy_member(const string _Name, int _ID, const Address & _address, bool _Status)
 {
-    Name = new char[strlen(_Name) + 1];
-    strcpy(Name,_Name);   
+    Name = _Name;
     ID = _ID;
-    address.copy_address(A.Street, A.City, A.State, A.ZIP);
+    address.copy_address(address.Street, _address.City, _address.State, _address.ZIP);
     Status = _Status;
 }
 
@@ -214,17 +212,13 @@ void Member::copy_member(const char * _Name, int _ID, const Address & A, bool _S
 int Member::read_member()
 {
     char new_Name[MAXCHAR];
-    if(Name){
-        delete [] Name;
-        Name = NULL;
-    }
     read_string("Name: ", new_Name, MAXCHAR);
-    Name = new char[strlen(new_Name) + 1];
-    strcpy(Name, new_Name);
+    Name = new_Name;
 
     ID = read_int("ID: ");
     address.read_address();
     Status = read_bool("Active? (y/n): ");
+
     return 0;
 }
 
@@ -239,17 +233,13 @@ int Member::edit_member()
     char choice;
 
     do{
-        cout << "A: Name\n" << "B: ID\n" << "C: Address\n" << "D: Active Status\n" << "Q: Quit\n";
+        cout << "A: Name\n" << "B: ID\n" << "C: Address\n" 
+	     << "D: Active Status\n" << "Q: Quit\n";
         choice = read_cmd();
         if(choice == 'A'){
             char new_Name[MAXCHAR];
-            read_string("Name: ", Name, MAXCHAR);
-            if(Name){
-                delete [] Name;
-                Name = NULL;
-            }
-            Name = new char[strlen(new_Name) + 1];
-            strcpy(Name, new_Name);
+            read_string("Name: ", new_Name, MAXCHAR);
+            Name = new_Name;
         }
         else if(choice == 'B'){
             ID = read_int("ID: ");
@@ -261,6 +251,7 @@ int Member::edit_member()
         }
 
     }while(choice != 'Q');
+
     return 0;
 }
 
@@ -278,6 +269,20 @@ void Member::display()
         cout << "No\n";
 }
 
+
+
+int Member::compare(string _Name)
+{
+    if(Name.compare(_Name) < 0)
+        return 1;
+    else
+        return 0;
+}
+
+char Member::return_name()
+{
+    return tolower(Name[0]);
+}
 
 
 
@@ -355,8 +360,8 @@ int Provider::edit_provider()
 
     do{
         cout << "A: Name\n" << "B: ID\n" << "C: Address\n" 
-            << "D: Active Status\n" << "E: Total number of members\n"
-            << "F: Total fee: \n" << "Q: Quit\n";
+             << "D: Active Status\n" << "E: Total number of members\n"
+             << "F: Total fee: \n" << "Q: Quit\n";
         choice = read_cmd();
         if(choice == 'A'){
             char new_Name[MAXCHAR];
@@ -399,7 +404,7 @@ void Provider::display()
 }
 
 
-int Provider::compare(string name)
+int Provider::compare(string _Name)
 {
     /*
     if(!strcasecmp(Name, name))
@@ -407,7 +412,7 @@ int Provider::compare(string name)
     else
         return 0;
     */
-    if(Name.compare(name) < 0)
+    if(Name.compare(_Name) < 0)
         return 1;
     else
         return 0;
@@ -447,7 +452,7 @@ void Service::print(){
     cout << "Date Service was Recorded: " << this->dateTime << endl;
     if(!this->provider->Name.empty())
         cout << "Name of the Provider: " << this->provider->Name << endl;
-    if(this->member->Name)     
+    if(this->member->Name.empty())     
         cout << "Name of the Member: " << this->member->Name << endl;
 
     cout << "Additional Comments: " << this->comments << endl << endl;

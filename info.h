@@ -18,7 +18,7 @@ class Address
     public:
         string Street;
         string City;
-        string  State;
+        string State;
         int ZIP;
 
         Address();
@@ -36,20 +36,22 @@ class Address
 class Member
 {
     public:
-        char * Name;
+        string Name;
         int ID;
         Address address;
         bool Status;
 
         Member();
         Member(const Member &);
-        Member(const char * _Name,int _ID, const Address & A, bool _Status);
+        Member(const string _Name, int _ID, const Address & _address, bool _Status);
         ~Member();
 
-        void copy_member(const char * _Name,int _ID, const Address & A, bool _Status);
+        void copy_member(const string _Name, int _ID, const Address & _address, bool _Status);
         int read_member();
         int edit_member();
         void display();
+        int compare(string _Name);
+        char return_name();
 };
 
 class Provider
@@ -63,16 +65,15 @@ class Provider
 
         Provider();
         Provider(const Provider &);
-        Provider(const string , int _ID, const Address &, int , double );
+        Provider(const string _Name, int _ID, const Address & _address, int _TotalMember, double _TotalFee);
         ~Provider();
 
         void copy_provider(const string , int _ID, const Address &, int , double );
         int read_provider();
         int edit_provider();
         void display();
-        int compare(string);
+        int compare(string _Name);
         char return_name();
-
 };
 
 class Service

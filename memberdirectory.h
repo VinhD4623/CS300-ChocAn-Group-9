@@ -6,6 +6,7 @@
 #include <fstream>
 #include "info.h"
 #include <string>
+#include "providedservicedirectory.h"
 
 using namespace std;
 
@@ -42,7 +43,10 @@ class MemberDirectory
 
 
     private:
+ 	mnode * head;
 
+	int addMember(mnode *&, mnode *);
+        int removeMember(mnode *&, char * name);
 };
 
 #endif
