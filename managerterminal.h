@@ -13,6 +13,7 @@ class ManagerTerminal: public Terminal
 {
     public:
         ManagerTerminal();
+        ManagerTerminal(ChocAnDataCenter *);
         ~ManagerTerminal();
 
         int manager_login();

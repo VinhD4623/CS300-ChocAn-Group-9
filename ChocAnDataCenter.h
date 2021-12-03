@@ -20,7 +20,7 @@ class ChocAnDataCenter{
         void createProviderReport();
         void addService(Service *&);
         void print_provider_list();
-        void create_member_reports();
+        void createMemberReports();
 
         ChocAnDataCenter();
         ~ChocAnDataCenter();

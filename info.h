@@ -92,6 +92,7 @@ class Service
 
         Service();
         Service(int _ServiceCode, char _Date[11], string _DateTime, Provider * p, Member * m, char _Comments[100]);
+        Service(const Service *);
         ~Service();
 };
 

@@ -7,8 +7,7 @@
 psd_node::psd_node(): next(NULL)
 {}
 
-psd_node::psd_node(Service *new_service): next(NULL)
-{
+psd_node::psd_node(Service * new_service): next(NULL){
     this->service = new_service;
 }
 
@@ -23,6 +22,56 @@ psd_node::~psd_node()
 ******************************/
 ProvidedServiceDirectory::ProvidedServiceDirectory(): head (NULL)
 {}
+
+psd_node * ProvidedServiceDirectory::copy_list(psd_node *original){
+    
+    psd_node *current = original;
+    
+    psd_node *copy = new psd_node();
+    copy->service = new Service(*current->service);
+    copy->next = NULL;
+
+    psd_node *const head = copy;
+
+    while(current != NULL){
+        copy = copy->next = new psd_node;
+        copy->service = new Service(*current->service);
+        copy->next = NULL;
+        current = current->next;
+    }
+    
+    return head;
+}
+
+psd_node * ProvidedServiceDirectory::search_list(psd_node *original){
+
+    psd_node *current = original;
+    
+    psd_node *copy = new psd_node();
+    copy->service = new Service(*current->service);
+    copy->next = NULL;
+
+    psd_node *const head = copy;
+
+    int current_id = original->service->member->ID;
+    cout << "current id: " << current_id << endl;
+
+    while(current != NULL){
+        if(current_id == current->service->member->ID){
+            copy = copy->next = new psd_node;
+            copy->service = new Service(*current->service);
+            copy->next = NULL;
+        }
+        current = current->next;
+    }
+    
+    return head;
+
+}
+
+void ProvidedServiceDirectory::create_member_reports(){
+
+}
 
 void ProvidedServiceDirectory::append(Service *new_service){
     

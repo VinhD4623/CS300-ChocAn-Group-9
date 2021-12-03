@@ -14,6 +14,24 @@ ChocAnDataCenter::~ChocAnDataCenter(){
 }
 
 void ChocAnDataCenter::createMemberReports(){
+    cout << "\nThe original list is: " << endl;
+    provided_service_directory->print_list();
+/*
+    ProvidedServiceDirectory *copy = new ProvidedServiceDirectory();
+    copy->head = copy->copy_list(this->provided_service_directory->head);
+    
+    cout << "\nThe copied list is: " << endl;
+    copy->print_list();
+    //create a provided service directory for the first member in the list
+    //ProvidedServiceDirectory *current_member = new ProvidedServiceDirectory();
+*/
+/*
+    ProvidedServiceDirectory *current_member = new ProvidedServiceDirectory();
+    current_member->head = current_member->search_list(copy->head);
+    cout << "The search for a member found these services: " << endl;
+    current_member->print_list();
+    cout << "DONEDONEONDEOND" << endl;
+*/
     provided_service_directory->create_member_reports();
 }
 

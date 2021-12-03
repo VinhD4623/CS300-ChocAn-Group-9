@@ -447,6 +447,18 @@ Service::Service(int _ServiceCode, char _Date[11], string _DateTime, Provider * 
     member = new Member(*m);
 }
 
+Service::Service(const Service * to_copy){
+    this->service_code = to_copy->service_code;
+    //may need to do a better copy for the provider and member here if problems start to arise
+    this->provider = new Provider(*to_copy->provider);
+    this->member = new Member(*to_copy->member);
+    for(int i = 0; i < 11; ++i)
+        date[i] = to_copy->date[i];
+    for(int k = 0; k < 100; ++k)
+        comments[k] = to_copy->comments[k];
+    this->dateTime = to_copy->dateTime;
+}
+
 void Service::print(){
     cout << endl << "Service Code: " << this->service_code << endl;
     cout << "Date Service was Provided: " << this->date << endl;

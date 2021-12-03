@@ -31,9 +31,8 @@ int login(ProviderTerminal *p_terminal, ManagerTerminal *m_terminal){
 
 int main()
 {
-  
    ProviderTerminal *p_terminal = new ProviderTerminal();
-   ManagerTerminal *m_terminal = new ManagerTerminal();
+   ManagerTerminal *m_terminal = new ManagerTerminal(p_terminal->data_center);
 
    while(login(p_terminal, m_terminal));
    

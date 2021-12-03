@@ -23,13 +23,15 @@ class ProvidedServiceDirectory{
         void print_list(psd_node *&);
 
         void create_member_reports();
+        psd_node * copy_list(psd_node *);
+        psd_node * search_list(psd_node *);
 
         void writeToFile(string filename);
 
         ProvidedServiceDirectory();
         ~ProvidedServiceDirectory();
 
-    private:
+  
         psd_node *head;
 };
 
