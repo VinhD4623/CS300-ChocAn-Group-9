@@ -22,6 +22,8 @@ class ProvidedServiceDirectory{
         void print_list();
         void print_list(psd_node *&);
 
+        void create_member_reports();
+
         void writeToFile(string filename);
 
         ProvidedServiceDirectory();

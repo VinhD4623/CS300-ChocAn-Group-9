@@ -7,9 +7,9 @@ ManagerTerminal::~ManagerTerminal(){}
 
 int ManagerTerminal::manager_login()
 {
-    int atempt = 0;
-    atempt = read_int("Enter manger ID number: ");
-    if(id == atempt)
+    int attempt = 0;
+    attempt = read_int("Enter manager ID number: ");
+    if(id == attempt)
         return 1;
     else
         return 0;
@@ -23,7 +23,9 @@ void ManagerTerminal::run_terminal()
             << "Select one of the following\n"
             << "1.) Provider Directory Menu. (Make changes or view)\n"
             << "2.) Member Directory Menu. (Make changes or view)\n"
-            << "3.) Request Provider Report\n\n";
+            << "3.) Request Provider Report\n"
+            << "4.) Generate Member Reports"
+            << "5.) Exit\n\n";
         cmd = read_int("Selection: ");
         switch (cmd)
         {
@@ -36,10 +38,13 @@ void ManagerTerminal::run_terminal()
         case 3: 
             data_center->createProviderReport();
             break;
+        case 4:
+            data_center->createMemberReports();
+
         default:
             break;
         }
-    }while(cmd != 0);
+    }while(cmd != 5);
 }
 
 
@@ -47,7 +52,7 @@ void ManagerTerminal::edit_provider_menu()
 {
     int cmd = 0;
     do{
-        cout << "Make Changes To Provider Directory\n"
+        cout << "\nMake Changes To Provider Directory\n"
             << "Select one of the following\n"
             << "1.) Add a new provider\n"
             << "2.) Edit an existing provider\n"
@@ -71,7 +76,7 @@ void ManagerTerminal::edit_provider_menu()
                 data_center->removeProvider();
                 break;
             case 5:
-                data_center->print_provided_list();
+                data_center->print_provider_list();
           
             default:
                 break;
@@ -83,22 +88,32 @@ void ManagerTerminal::edit_provider_menu()
 
 void ManagerTerminal::edit_member_menu()
 {
-
+    
 }
 
 
 
 int ManagerTerminal::addMember()
-{}
+{
+    return 0;
+}
 
 int ManagerTerminal::editMember()
-{}
+{
+    return 0;
+}
 
 int ManagerTerminal::searchMember()
-{}
+{
+    return 0;
+}
 
 int ManagerTerminal::removeMember()
-{}
+{
+    return 0;
+}
 
 int ManagerTerminal::printAllMembers()
-{}
+{
+    return 0;
+}

@@ -16,7 +16,6 @@ int login(ProviderTerminal *p_terminal, ManagerTerminal *m_terminal){
       p_terminal->provider_login();
    }
    else if(login_choice == 2){
-      //create manager terminal object here
       if(m_terminal->manager_login() == 1)
          m_terminal->run_terminal();
       else{

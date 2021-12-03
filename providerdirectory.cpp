@@ -71,6 +71,8 @@ int ProviderDirectory::removeProvider()
 {
     if(!head) return 0;
 
+    printList();
+
     char name[32];
     read_string("Name of provider to be removed: ", name, 32);
 
@@ -82,11 +84,12 @@ int ProviderDirectory::removeProvider(pnode *& head, char * name)
 {
     if(!head) return 0;
 
-    if(head->provider.compare(name)){
+    if(head->provider.compare(name) == 0){
         pnode * temp = head; 
         head = head->next;
         delete temp;
         temp = NULL;
+        cout << "Removed the provider " << name << endl;
         return 1;
     }
     return removeProvider(head->next, name);
@@ -141,6 +144,7 @@ int ProviderDirectory::clear(pnode *& head)
 int ProviderDirectory::editProvider()
 {
     if(!head) return 0; //Empty provider list
+    printList();
     char name[32];
     read_string("Name of provider to edit: ", name, 32);
     
@@ -159,7 +163,7 @@ int ProviderDirectory::editProvider()
 int ProviderDirectory::editProvider(pnode * head, char * name)
 {
     if(!head) return 0;
-    if(head->provider.compare(name) == 1){
+    if(head->provider.compare(name) == 0){
      /* int cmd;
         do{
         cout << "What do you want to edit?\n\n";
@@ -181,6 +185,8 @@ int ProviderDirectory::editProvider(pnode * head, char * name)
             }
         }while(cmd != 4)
         */ 
+       
+        //edit provider function described in the Provider class in info.h and info.cpp files
         head->provider.edit_provider();
         return 1;
     }
@@ -192,6 +198,7 @@ int ProviderDirectory::editProvider(pnode * head, char * name)
 int ProviderDirectory::printList()
 {
     if(!head) return 0;
+    cout << endl;
     return printList(head);
 }
 

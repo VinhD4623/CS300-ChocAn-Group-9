@@ -359,6 +359,7 @@ int Provider::edit_provider()
     char choice;
 
     do{
+        cout << endl;
         cout << "A: Name\n" << "B: ID\n" << "C: Address\n" 
              << "D: Active Status\n" << "E: Total number of members\n"
              << "F: Total fee: \n" << "Q: Quit\n";

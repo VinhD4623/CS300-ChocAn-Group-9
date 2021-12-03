@@ -29,7 +29,6 @@ void ProvidedServiceDirectory::append(Service *new_service){
     psd_node * temp = new psd_node(new_service);
 
     if(this->head == NULL){
-        cout << "Head is null" << endl;
         this->head = temp;
         return;
     }
@@ -50,7 +49,7 @@ psd_node * ProvidedServiceDirectory::append(psd_node *& current, psd_node *& new
 
 void ProvidedServiceDirectory::print_list(){
     if(this->head == NULL){
-        cout << "\nThe list is empty\n" << endl;
+        cout << "\nThe Provided Services list is empty\n" << endl;
     }
 
     print_list(this->head);

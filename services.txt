@@ -1,0 +1,16 @@
+111111 
+cut hair 
+$20
+break
+222222
+cure cancer
+$1
+break
+333333
+heart surgery
+$100
+break
+444444
+dance lessons
+$1000000
+break

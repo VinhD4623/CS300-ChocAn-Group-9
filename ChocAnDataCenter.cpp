@@ -13,6 +13,10 @@ ChocAnDataCenter::~ChocAnDataCenter(){
     if(provided_service_directory) delete provided_service_directory;
 }
 
+void ChocAnDataCenter::createMemberReports(){
+    provided_service_directory->create_member_reports();
+}
+
 void ChocAnDataCenter::append(Service *new_service){
     provided_service_directory->append(new_service);
 }
@@ -52,4 +56,8 @@ void ChocAnDataCenter::createProviderReport(){
 
 void ChocAnDataCenter::addService(Service *& new_service){
     provider_directory->addService(new_service);
+}
+
+void ChocAnDataCenter::print_provider_list(){
+    provider_directory->printList();
 }
