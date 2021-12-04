@@ -12,7 +12,7 @@ ManagerTerminal::~ManagerTerminal(){}
 int ManagerTerminal::manager_login()
 {
     int attempt = 0;
-    attempt = read_int("Enter manager ID number: ");
+    attempt = read_int("Enter manager ID number (123456789): ");
     if(id == attempt)
         return 1;
     else
@@ -26,10 +26,9 @@ void ManagerTerminal::run_terminal()
         cout << "Manager Terminal Menu\n"
             << "Select one of the following\n"
             << "1.) Provider Directory Menu. (Make changes or view)\n"
-            << "2.) Member Directory Menu. (Make changes or view)\n"
-            << "3.) Request Provider Report\n"
-            << "4.) Generate Member Reports\n"
-            << "5.) Exit\n\n";
+            << "2.) Request Provider Report\n"
+            << "3.) Generate Member Reports\n"
+            << "4.) Exit\n\n";
         cmd = read_int("Selection: ");
         switch (cmd)
         {
@@ -37,18 +36,16 @@ void ManagerTerminal::run_terminal()
             edit_provider_menu();
             break;
         case 2: 
-            edit_member_menu();
-            break;
-        case 3: 
             data_center->createProviderReport();
             break;
-        case 4:
+        case 3:
             data_center->createMemberReports();
+            break;
 
         default:
             break;
         }
-    }while(cmd != 5);
+    }while(cmd != 4);
 }
 
 

@@ -30,6 +30,14 @@ Address::Address(const string _Street, const string _City, const string _State, 
     copy_address(_Street, _City, _State, _ZIP);
 }
 
+ostream& operator<<(ostream &outFile, const Address& address){
+    outFile << "Street: " << address.Street << endl
+    << "City: " << address.City << endl
+    << "State: " << address.State << endl
+    << "ZIP: " << address.ZIP << endl;
+    return outFile;
+}
+
 //Destructor
 Address::~Address()
 {
@@ -202,7 +210,7 @@ void Member::copy_member(const string _Name, int _ID, const Address & _address, 
 {
     Name = _Name;
     ID = _ID;
-    address.copy_address(address.Street, _address.City, _address.State, _address.ZIP);
+    address.copy_address(_address.Street, _address.City, _address.State, _address.ZIP);
     Status = _Status;
 }
 

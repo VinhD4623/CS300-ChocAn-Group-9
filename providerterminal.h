@@ -14,6 +14,7 @@ class ProviderTerminal : public Terminal{
         void print_services();
         int check_service_code(int);
         void display_fee(int);
+        void fill_member();
 
         ProviderTerminal();
         ~ProviderTerminal();

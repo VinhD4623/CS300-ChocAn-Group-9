@@ -37,7 +37,7 @@ int ProviderTerminal::run_terminal(){
         this->check_member_validation();
 
         //Create a new service that was provided to a member
-        this->bill_member();
+        //this->bill_member();
     } else if(option == 2){
         this->print_services();
     }else if(option == 3){
@@ -53,13 +53,44 @@ void ProviderTerminal::check_member_validation(){
     this->current_member->ID = read_int_maxdigits("Enter the Member ID number", 9);
     //check here if the Id number matches one from the member files
 
+    //get member ids here - if member id is not already existing, make provider enter inmformation 
+    int all_IDs[100];
+    this->data_center->get_IDs(all_IDs);
 
+    bool flag = false;
+    int i = 0;
+    while(all_IDs[i] != 0){
+        if(this->current_member->ID == all_IDs[i]){
+            flag = true;
+            break;
+        }
+        ++i;
+    }
+    if(flag == false){
+        this->fill_member();
+    }
+    this->bill_member();
+}
+
+void ProviderTerminal::fill_member(){
+    cout << "The member ID does not match any in record." << endl;
+    cout << "Please fill in member data to create a record." << endl;
+    cout << "Member name: ";
+    cin >> this->current_member->Name;
+    cout << "Member Street: ";
+    cin >> this->current_member->address.Street;
+    cout << "Member City: ";
+    cin >> this->current_member->address.City;
+    cout << "Member State: ";
+    cin >> this->current_member->address.State;
+    this->current_member->address.ZIP = read_int("Member ZIP: ");
+    cout << endl;
 }
 
 //Function that is initiated when a provider has preformed a service and 
 //is going to record it
 void ProviderTerminal::bill_member(){
-    this->current_member->ID = read_int_maxdigits("Enter the Member ID number", 9);
+    //this->current_member->ID = read_int_maxdigits("Enter the Member ID number", 9);
 
     this->create_service_report();
 }
@@ -87,9 +118,12 @@ void ProviderTerminal::create_service_report(){
 
     new_service->dateTime = temp;
    
-    new_service->provider = this->current_provider;
-    new_service->member = this->current_member;
+    //copy to the same memory address - need to create a new address for these members. 
+    //new_service->provider = this->current_provider;
+    //new_service->member = this->current_member;
 
+    new_service->provider = new Provider(*this->current_provider);
+    new_service->member = new Member(*this->current_member);
 
     //Display all service and there service codes from the file containing the data and 
     //prompt the provider to enter the corresponding service code to the service they provided

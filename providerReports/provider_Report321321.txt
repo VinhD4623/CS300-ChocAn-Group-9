@@ -1,0 +1,8 @@
+Name: 321321
+ID nunber: 321321
+Street: 3123
+City: 12312
+State: 312
+Zip: 321
+Total number of consultations with members:312
+Total fee for the week:321321

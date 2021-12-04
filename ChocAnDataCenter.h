@@ -21,6 +21,7 @@ class ChocAnDataCenter{
         void addService(Service *&);
         void print_provider_list();
         void createMemberReports();
+        void get_IDs(int *);
 
         ChocAnDataCenter();
         ~ChocAnDataCenter();

@@ -22,11 +22,13 @@ class ProvidedServiceDirectory{
         void print_list();
         void print_list(psd_node *&);
 
-        void create_member_reports();
+        void create_member_reports(int);
         psd_node * copy_list(psd_node *);
         psd_node * search_list(psd_node *);
+        int * list_all_IDs(int *);
+        int list_all_IDs(psd_node *&, int *, int);
 
-        void writeToFile(string filename);
+        void writeToFile(string);
 
         ProvidedServiceDirectory();
         ~ProvidedServiceDirectory();

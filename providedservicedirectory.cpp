@@ -1,5 +1,7 @@
 #include "providedservicedirectory.h"
 #include "info.h"
+#include <iostream>
+#include <fstream>
 
 /****************************
  * psd_node Struct
@@ -54,7 +56,6 @@ psd_node * ProvidedServiceDirectory::search_list(psd_node *original){
     psd_node *const head = copy;
 
     int current_id = original->service->member->ID;
-    cout << "current id: " << current_id << endl;
 
     while(current != NULL){
         if(current_id == current->service->member->ID){
@@ -69,7 +70,34 @@ psd_node * ProvidedServiceDirectory::search_list(psd_node *original){
 
 }
 
-void ProvidedServiceDirectory::create_member_reports(){
+void ProvidedServiceDirectory::create_member_reports(int current_id){
+    if(this->head == NULL) return;
+
+    string str = to_string(current_id);
+
+    string filename = "memberReports/" + str + " " + this->head->service->member->Name + this->head->service->dateTime;
+
+    ofstream outfile(filename);
+    
+    psd_node * current = this->head;
+
+    while(current != NULL){
+        if(current->service->member->ID == current_id){
+            ifstream pFile(filename);
+            if(pFile.peek() == std::ifstream::traits_type::eof()){
+                outfile << "Member Name: " << current->service->member->Name << endl
+                << "Member ID: " << current->service->member->ID << endl
+                << current->service->member->address << endl;
+            }
+            pFile.close();
+            outfile << "\n    Date Provided: " << current->service->date << endl
+            << "    Provider Name: " << current->service->provider->Name << endl
+            << "    Service Code: " << current->service->service_code << endl;
+        }
+        current = current->next;
+    }
+    outfile.close();
+
 
 }
 
@@ -142,3 +170,36 @@ void ProvidedServiceDirectory::writeToFile(string filename){
 
 }
 
+int * ProvidedServiceDirectory::list_all_IDs(int * all_IDs){
+    if(this->head == NULL){
+        cout << "\nThe list is empty" << endl;
+    }
+    
+    int index = 0;
+    index = list_all_IDs(this->head, all_IDs, index);
+
+    for(int i=0; i<index; i++){
+        cout << all_IDs[i] << endl;
+    }
+    return all_IDs;
+}
+
+int ProvidedServiceDirectory::list_all_IDs(psd_node *&current, int all_IDs[100], int index){
+    if(current == NULL) return index;
+
+    if(index == 0){
+        all_IDs[index] = current->service->member->ID;
+        return list_all_IDs(current->next, all_IDs, ++index);
+    }
+
+    for(int i=0; i<index; i++){
+        if(all_IDs[i] == current->service->member->ID){
+            return list_all_IDs(current->next, all_IDs, index);
+        }
+    }
+
+    all_IDs[index] = current->service->member->ID;
+    
+    return list_all_IDs(current->next, all_IDs, ++index);
+
+}

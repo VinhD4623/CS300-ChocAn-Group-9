@@ -30,6 +30,7 @@ class Address
         int read_address();
         int edit_address();
         void display();
+        friend ostream& operator<<(ostream& outFile, const Address& address);
 };
 
 // For Status, true means membership is valid.
