@@ -4,6 +4,7 @@ using namespace std;
 ManagerTerminal::ManagerTerminal(){}
 
 ManagerTerminal::ManagerTerminal(ChocAnDataCenter * ahhhhh){
+    delete this->data_center;
     this->data_center = ahhhhh;
 }
 

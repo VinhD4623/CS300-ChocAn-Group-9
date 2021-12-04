@@ -26,7 +26,6 @@ class ProvidedServiceDirectory{
         string get_name(psd_node *&, int);
         void create_member_reports(int);
         psd_node * copy_list(psd_node *);
-        psd_node * search_list(psd_node *);
         int * list_all_IDs(int *);
         int list_all_IDs(psd_node *&, int *, int);
 

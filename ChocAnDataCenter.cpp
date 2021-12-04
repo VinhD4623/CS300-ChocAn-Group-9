@@ -9,8 +9,8 @@ ChocAnDataCenter::ChocAnDataCenter(){
 
 ChocAnDataCenter::~ChocAnDataCenter(){
 
-    if(provider_directory) delete provider_directory;
-    if(provided_service_directory) delete provided_service_directory;
+    delete this->provider_directory;
+    delete this->provided_service_directory;
 }
 
 void ChocAnDataCenter::createMemberReports(){

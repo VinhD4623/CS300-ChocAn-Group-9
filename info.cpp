@@ -439,7 +439,9 @@ char Provider::return_name()
 //Service Class
 ///////////////////////////////
 
-Service::Service(){}
+Service::Service(){
+    cout << "Service constructor invoked" << endl;
+}
 Service::Service(int _ServiceCode, char _Date[11], string _DateTime, Provider * p, Member * m, char _Comments[100])
 {
     service_code = _ServiceCode;
@@ -480,4 +482,7 @@ void Service::print(){
 }
 
 Service::~Service()
-{}
+{
+    delete this->member;
+    delete this->provider;
+}

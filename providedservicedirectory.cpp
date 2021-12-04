@@ -15,7 +15,7 @@ psd_node::psd_node(Service * new_service): next(NULL){
 
 psd_node::~psd_node()
 {
-    if(service) delete service;
+    //if(service) delete service;
 }
 
 
@@ -43,31 +43,6 @@ psd_node * ProvidedServiceDirectory::copy_list(psd_node *original){
     }
     
     return head;
-}
-
-psd_node * ProvidedServiceDirectory::search_list(psd_node *original){
-
-    psd_node *current = original;
-    
-    psd_node *copy = new psd_node();
-    copy->service = new Service(*current->service);
-    copy->next = NULL;
-
-    psd_node *const head = copy;
-
-    int current_id = original->service->member->ID;
-
-    while(current != NULL){
-        if(current_id == current->service->member->ID){
-            copy = copy->next = new psd_node;
-            copy->service = new Service(*current->service);
-            copy->next = NULL;
-        }
-        current = current->next;
-    }
-    
-    return head;
-
 }
 
 string ProvidedServiceDirectory::get_name(psd_node *&current, int current_id){
@@ -116,8 +91,6 @@ void ProvidedServiceDirectory::create_member_reports(int current_id){
         current = current->next;
     }
     outfile.close();
-
-
 }
 
 void ProvidedServiceDirectory::append(Service *new_service){
@@ -137,7 +110,6 @@ psd_node * ProvidedServiceDirectory::append(psd_node *& current, psd_node *& new
         current = new_node;
         return current;
     }
-
     current->next = append(current->next, new_node);
 
     return current;
@@ -180,6 +152,7 @@ int ProvidedServiceDirectory::clear(psd_node *&head){
         return 1;
     }
     psd_node * temp = head->next;
+    if(head->service) delete head->service;
     delete head;
     return clear(temp);
 }

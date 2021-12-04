@@ -11,5 +11,5 @@ Terminal::Terminal(){
 }
 
 Terminal::~Terminal(){
-    if(this->data_center) delete this->data_center;
+    
 }

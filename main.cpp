@@ -36,8 +36,8 @@ int main()
 
    while(login(p_terminal, m_terminal));
    
-   if(p_terminal) delete p_terminal;
-   if(m_terminal) delete m_terminal;
+   delete p_terminal;
+   delete m_terminal;
    /*
    ProviderDirectory obj;
    obj.addProvider();

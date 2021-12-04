@@ -13,8 +13,11 @@ ProviderTerminal::ProviderTerminal(){
 }
 
 ProviderTerminal::~ProviderTerminal(){
-    if(current_provider) delete current_provider;
-    if(current_member) delete current_member;
+    delete current_provider;
+    delete current_member;
+
+    delete data_center;
+    
 }
 
 void ProviderTerminal::provider_login(){
