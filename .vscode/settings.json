@@ -6,6 +6,7 @@
         "string": "cpp",
         "istream": "cpp",
         "chrono": "cpp",
-        "algorithm": "cpp"
+        "algorithm": "cpp",
+        "typeinfo": "cpp"
     }
 }

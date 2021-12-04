@@ -75,14 +75,14 @@ void ProviderTerminal::check_member_validation(){
 void ProviderTerminal::fill_member(){
     cout << "The member ID does not match any in record." << endl;
     cout << "Please fill in member data to create a record." << endl;
-    cout << "Member name: ";
-    cin >> this->current_member->Name;
+    cout << "Member Name: ";
+    getline(cin,this->current_member->Name);
     cout << "Member Street: ";
-    cin >> this->current_member->address.Street;
+    getline(cin,this->current_member->address.Street);
     cout << "Member City: ";
-    cin >> this->current_member->address.City;
+    getline(cin,this->current_member->address.City);
     cout << "Member State: ";
-    cin >> this->current_member->address.State;
+    getline(cin,this->current_member->address.State);
     this->current_member->address.ZIP = read_int("Member ZIP: ");
     cout << endl;
 }

@@ -23,7 +23,7 @@ void ManagerTerminal::run_terminal()
 {
     int cmd = 0;
     do{
-        cout << "Manager Terminal Menu\n"
+        cout << "\nManager Terminal Menu\n"
             << "Select one of the following\n"
             << "1.) Provider Directory Menu. (Make changes or view)\n"
             << "2.) Request Provider Report\n"

@@ -70,12 +70,31 @@ psd_node * ProvidedServiceDirectory::search_list(psd_node *original){
 
 }
 
+string ProvidedServiceDirectory::get_name(psd_node *&current, int current_id){
+    if(current == NULL) return NULL;
+
+    if(current->service->member->ID == current_id){
+        return current->service->member->Name;
+    }
+    return get_name(current->next, current_id);
+}
+
+string ProvidedServiceDirectory::get_dateTime(psd_node *&current, int current_id){
+    if(current == NULL) return NULL;
+
+    if(current->service->member->ID == current_id){
+        return current->service->dateTime;
+    }
+    return get_dateTime(current->next, current_id);
+}
+
 void ProvidedServiceDirectory::create_member_reports(int current_id){
     if(this->head == NULL) return;
 
-    string str = to_string(current_id);
+    string name = this->get_name(this->head, current_id);
+    string dateTime = this->get_dateTime(this->head, current_id);
 
-    string filename = "memberReports/" + str + " " + this->head->service->member->Name + this->head->service->dateTime;
+    string filename = "memberReports/" + name + " " + dateTime;
 
     ofstream outfile(filename);
     
@@ -177,10 +196,7 @@ int * ProvidedServiceDirectory::list_all_IDs(int * all_IDs){
     
     int index = 0;
     index = list_all_IDs(this->head, all_IDs, index);
-
-    for(int i=0; i<index; i++){
-        cout << all_IDs[i] << endl;
-    }
+    
     return all_IDs;
 }
 

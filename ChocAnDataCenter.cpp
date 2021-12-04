@@ -14,7 +14,7 @@ ChocAnDataCenter::~ChocAnDataCenter(){
 }
 
 void ChocAnDataCenter::createMemberReports(){
-    provided_service_directory->print_list();
+    //provided_service_directory->print_list();
 
     int all_IDs[100];
     this->get_IDs(all_IDs);
